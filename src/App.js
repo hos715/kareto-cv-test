@@ -44,7 +44,7 @@ function App() {
           <h2 className="c-not-found">
             unfortunately there is no match Here,
             <br />
-            try again with other word
+            try again with other word<br/>
           </h2>
         )}
       </div>
