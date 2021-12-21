@@ -111,3 +111,10 @@ body {
     font-size: 14px;
     color: var(--color-dark);
 }
+.c-not-found {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    padding: 16px;
+    line-height: 120%;
+}
