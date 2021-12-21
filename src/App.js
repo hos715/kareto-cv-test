@@ -7,6 +7,7 @@ function App() {
 
   const handleSearchWord = (e) => {
     e.preventDefault();
+    setAnswers([]);
     axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`)
       .then((response) => {
