@@ -1,4 +1,5 @@
 :root {
+  --color-dark: #363636;
   --color-white: #ffffff;
   --color-primary: #7999cf;
   --color-secondary: #ec6d51;
@@ -77,4 +78,36 @@ body {
 .c-btn:hover {
   border-color: var(--color-secondary);
   color: var(--color-primary);
+}
+.c-app-result {
+    background-color: var(--color-bg-light);
+    width: 100%;
+    padding: 32px 16px 0;
+}
+.c-app-result__col {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto 32px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 16px;
+    border-bottom: 2px solid var(--color-secondary);
+}
+.c-app-result__col:last-child {
+    border-bottom: 0;
+}
+.c-app-result--word {
+    font-size: 24px;
+    color: var(--color-secondary);
+    margin-bottom: 8px;
+}
+.c-app-result--word-phonetic {
+    font-size: 15px;
+}
+.c-app-result--meaning-def {
+    padding-left: 16px;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--color-dark);
 }

@@ -3,14 +3,14 @@ import { useState } from "react";
 
 function App() {
   const [searchWord, setSearchWord] = useState("");
-  const [answer, setAnswer] = useState([]);
+  const [answers, setAnswers] = useState([]);
 
   const handleSearchWord = (e) => {
     e.preventDefault();
     axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`)
       .then((response) => {
-        setAnswer(response.data);
+        setAnswers(response.data);
         console.log(response.data);
       })
       .catch((ex) => {
@@ -49,9 +49,39 @@ function App() {
             />
           </form>
         </div>
-        <div className="c-app__result">{answer.map((item,index)=>(
-          <h1 key={index}>{item.word}</h1>
-        ))}</div>
+        <div className="c-app-result">
+          {answers.map((answer, index) => (
+            <div className="c-app-result__col">
+              <h2 className="c-app-result--word" key={index}>
+                {`${answer.word}: `}<em className="c-app-result--word-phonetic">{answer.phonetic}</em>
+              </h2>
+
+              {answer.phonetics[0].audio ? (
+                <audio controls>
+                  <source src={answer.phonetics[0].audio} />
+                </audio>
+              ) : null}
+
+              {answer.meanings ? (
+                <>
+                  {answer.meanings.map((meaning, index) => (
+                    <div
+                      className="c-app-result--meaning"
+                      key={`meaning-${index}`}
+                    >
+                      <p>{meaning.partOfSpeech}</p>
+                      <span>{meaning.definitions.map((def,index)=>(
+                        <span className="c-app-result--meaning-def" key={`${answer}-def-${index}`}>
+                          {def.definition}
+                        </span>
+                      ))}</span>
+                    </div>
+                  ))}
+                </>
+              ) : null}
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
